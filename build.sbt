@@ -24,6 +24,9 @@ ThisBuild / developers := List(
   tlGitHubDev("ybasket", "Yannick Heiber")
 )
 
+// Disable automatic snapshot publishing to try keeping within sonatype rate limits
+ThisBuild / tlCiReleaseBranches := Nil
+
 // use JDK 17
 ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
 
