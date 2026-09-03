@@ -24,6 +24,9 @@ ThisBuild / developers := List(
   tlGitHubDev("ybasket", "Yannick Heiber")
 )
 
+// Disable automatic snapshot publishing to try keeping within sonatype rate limits
+ThisBuild / tlCiReleaseBranches := Nil
+
 // use JDK 17
 ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
 
@@ -88,7 +91,7 @@ lazy val playJson = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("playJson"))
   .settings(commonSettings: _*)
   .settings(name := "diffson-play-json",
-            libraryDependencies += "org.playframework" %%% "play-json" % "3.1.0-M9",
+            libraryDependencies += "org.playframework" %%% "play-json" % "3.1.0-M10",
             tlVersionIntroduced := Map("3" -> "4.3.0"))
   .nativeSettings(tlVersionIntroduced := Map("2.12" -> "4.7.0", "2.13" -> "4.7.0", "3" -> "4.7.0"))
   .dependsOn(core, testkit % Test)
