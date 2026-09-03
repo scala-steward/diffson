@@ -2,7 +2,7 @@ import com.typesafe.tools.mima.core._
 
 val scala212 = "2.12.21"
 val scala213 = "2.13.18"
-val scala3 = "3.3.7"
+val scala3 = "3.3.8"
 
 val scalatestVersion = "3.2.20"
 val scalacheckVersion = "1.19.0"
@@ -23,6 +23,9 @@ ThisBuild / developers := List(
   tlGitHubDev("satabin", "Lucas Satabin"),
   tlGitHubDev("ybasket", "Yannick Heiber")
 )
+
+// Disable automatic snapshot publishing to try keeping within sonatype rate limits
+ThisBuild / tlCiReleaseBranches := Nil
 
 // use JDK 17
 ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
@@ -88,7 +91,7 @@ lazy val playJson = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("playJson"))
   .settings(commonSettings: _*)
   .settings(name := "diffson-play-json",
-            libraryDependencies += "org.playframework" %%% "play-json" % "3.1.0-M9",
+            libraryDependencies += "org.playframework" %%% "play-json" % "3.1.0-M10",
             tlVersionIntroduced := Map("3" -> "4.3.0"))
   .nativeSettings(tlVersionIntroduced := Map("2.12" -> "4.7.0", "2.13" -> "4.7.0", "3" -> "4.7.0"))
   .dependsOn(core, testkit % Test)
