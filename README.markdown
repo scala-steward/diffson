@@ -1,8 +1,8 @@
 Gnieh Diffson
-[![Build Status](https://travis-ci.org/gnieh/diffson.png)](https://travis-ci.org/gnieh/diffson) 
+[![Build Status](https://github.com/gnieh/diffson/workflows/Continuous%20Integration/badge.svg)](https://github.com/gnieh/diffson/actions/workflows/ci.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/org.gnieh/diffson-core_2.13)](https://central.sonatype.com/artifact/org.gnieh/diffson-core_2.13)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9892e2c968974ecb951d21969adbadaa)](https://www.codacy.com/app/satabin/diffson?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gnieh/diffson&amp;utm_campaign=Badge_Grade) 
 [![Code Coverage](https://codecov.io/github/gnieh/diffson/coverage.svg?branch=master)](https://codecov.io/github/gnieh/diffson?branch=master) 
-[![Maven Central](https://img.shields.io/maven-central/v/org.gnieh/diffson-core_2.13.svg)](https://maven-badges.herokuapp.com/maven-central/org.gnieh/diffson-core_2.13) 
 [![Scaladoc](https://javadoc.io/badge/org.gnieh/diffson-core_2.13.svg)](https://javadoc.io/doc/org.gnieh/diffson-core_2.13)
 
 ----
@@ -26,6 +26,7 @@ It also provides methods to compute _diffs_ between two Json values that produce
   - [Simple diffs](#simple-diffs)
   - [Remembering old values](#remembering-old-values)
 - [Json Merge Patches (RFC-7396)](#json-merge-patches-rfc-7396)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -35,7 +36,7 @@ Getting Started
 This library is published in the [Maven][7] [Central Repository][8].
 You can add it to your sbt project by putting this line into your build description:
 ```scala
-libraryDependencies += "org.gnieh" %% f"diffson-$jsonLib" % "4.1.1"
+libraryDependencies += "org.gnieh" %% f"diffson-$jsonLib" % "4.7.1"
 ```
 
 where `jsonLib` is either:
@@ -47,10 +48,12 @@ where `jsonLib` is either:
 
 These versions are built for Scala 2.12, 2.13, and 3.
 
-Scala.JS is also supported for Scala 2.12, 2.13, and 3. 
-To use it, add this dependency to your build file:
+Scala.js (1.x) and Scala Native (0.5.x) are supported for `core`, `circe`, `play-json`,
+`ujson`, and `testkit`, on the same three Scala versions.
+
+For these platforms, add this dependency to your build file:
 ```scala
-libraryDependencies += "org.gnieh" %%% f"diffson-$jsonLib" % "4.1.1"
+libraryDependencies += "org.gnieh" %%% f"diffson-$jsonLib" % "4.7.1"
 ```
 
 Json Library
@@ -377,6 +380,11 @@ which will create the following Json:
 }
 ```
 which we can easily verify is the same as `json2` modulo reordering of fields.
+
+License
+-------
+
+Diffson is licensed under the [Apache License, Version 2.0](LICENSE).
 
 [1]: https://datatracker.ietf.org/doc/html/rfc6901
 [2]: https://datatracker.ietf.org/doc/html/rfc6902
